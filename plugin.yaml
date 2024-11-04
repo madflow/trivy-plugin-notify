@@ -1,0 +1,30 @@
+name: "notify"
+version: "0.0.1"
+repository: github.com/madflow/trivy-plugin-notify
+maintainer: madflow
+summary: Vulnerability notification
+description: |-
+  Trivy plugin for sending notifications to one or more supported providers.
+  Currently supports slack and webhook.
+output: true
+platforms:
+  - selector:
+      os: darwin
+      arch: amd64
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.1/trivy_plugin_notify_0.0.1_darwin-amd64.tar.gz
+    bin: ./notify
+  - selector:
+      os: darwin
+      arch: arm64
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.1/trivy_plugin_notify_0.0.1_darwin-arm64.tar.gz
+    bin: ./notify
+  - selector:
+      os: linux
+      arch: amd64
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.1/trivy_plugin_notify_0.0.1_linux-amd64.tar.gz
+    bin: ./notify
+  - selector:
+      os: linux
+      arch: arm64
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.1/trivy_plugin_notify_0.0.1_linux-arm64.tar.gz
+    bin: ./notify
