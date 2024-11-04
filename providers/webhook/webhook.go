@@ -7,8 +7,6 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-
-	"github.com/madflow/trivy-plugin-notify/report"
 )
 
 var allowedMethods = map[string]bool{
@@ -26,7 +24,7 @@ func (p *ProviderWebhook) Name() string {
 	return "slack"
 }
 
-func (p *ProviderWebhook) Notify(data report.Report) error {
+func (p *ProviderWebhook) Notify(data interface{}) error {
 	webhookUrl := os.Getenv("WEBHOOK_URL")
 	if webhookUrl == "" {
 		return errors.New("WEBHOOK_URL environment variable is not set")
@@ -49,7 +47,7 @@ func (p *ProviderWebhook) Notify(data report.Report) error {
 	return nil
 }
 
-func sendWebhookMessage(webhookUrl string, method string, data report.Report) error {
+func sendWebhookMessage(webhookUrl string, method string, data interface{}) error {
 	if method == "GET" {
 		// when the webhook method is GET, we send the data as query parameters
 		// the data has to be encoded to JSON before

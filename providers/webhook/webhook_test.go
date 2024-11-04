@@ -6,10 +6,11 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
-
-	"github.com/aquasecurity/trivy/pkg/types"
-	"github.com/madflow/trivy-plugin-notify/report"
 )
+
+type testPayload struct {
+	ArtifactName string
+}
 
 func Test_sendWebhookMessage(t *testing.T) {
 	t.Run("webhook success post", func(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_sendWebhookMessage(t *testing.T) {
 			body := r.Body
 			defer body.Close()
 
-			data := types.Report{}
+			data := testPayload{}
 			err := json.NewDecoder(body).Decode(&data)
 			if err != nil {
 				t.Errorf("unexpected error: %v", err)
@@ -38,7 +39,7 @@ func Test_sendWebhookMessage(t *testing.T) {
 		}))
 		defer ts.Close()
 
-		data := report.Report{
+		data := testPayload{
 			ArtifactName: "test",
 		}
 		err := sendWebhookMessage(ts.URL, "POST", data)
@@ -62,7 +63,7 @@ func Test_sendWebhookMessage(t *testing.T) {
 			}
 			paramData := query.Get("vulnerabilities")
 
-			data := types.Report{}
+			data := testPayload{}
 			err := json.Unmarshal([]byte(paramData), &data)
 			if err != nil {
 				t.Errorf("unexpected error: %v", err)
@@ -76,9 +77,9 @@ func Test_sendWebhookMessage(t *testing.T) {
 		}))
 		defer ts.Close()
 
-		data := report.Report{
-			ArtifactName: "test",
-		}
+		data := map[string]string{}
+		data["ArtifactName"] = "test"
+
 		err := sendWebhookMessage(ts.URL, "GET", data)
 		if err != nil {
 			t.Errorf("unexpected error: %v", err)

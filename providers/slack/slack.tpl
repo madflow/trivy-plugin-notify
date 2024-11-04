@@ -8,7 +8,7 @@
         "emoji": true
       }
     },
-    {{- range . }}
+    {{- range .Results }}
       {{- if or (eq .Class "lang-pkgs") (eq .Class "os-pkgs") }} 
         {
           "type": "section",
@@ -75,7 +75,7 @@
                         },
                         {
                           "type": "text",
-                          "text": "{{- if (gt (len .FixedVersion) 0) }} (upgrade to: {{ .FixedVersion | toString }}) {{- else}} (no fixed version) {{- end }}"
+                          "text": "{{- if kindIs "string" .FixedVersion }} (upgrade to: {{ .FixedVersion | toString }}) {{- else}} (no fixed version) {{- end }}"
                         }
                       ]
                     }

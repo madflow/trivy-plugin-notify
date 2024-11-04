@@ -11,11 +11,10 @@ import (
 
 	"github.com/madflow/trivy-plugin-notify/providers/slack"
 	"github.com/madflow/trivy-plugin-notify/providers/webhook"
-	"github.com/madflow/trivy-plugin-notify/report"
 )
 
 func main() {
-	var report report.Report
+	var report interface{}
 	if err := json.NewDecoder(os.Stdin).Decode(&report); err != nil {
 		log.Fatalf("failed to read stdin. please make sure to use the --json flag")
 	}
@@ -24,7 +23,7 @@ func main() {
 	}
 }
 
-func run(report report.Report) error {
+func run(report interface{}) error {
 	providersFlag := flag.String("providers", "", "Notification providers (comma separated)")
 	flag.Parse()
 
