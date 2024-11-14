@@ -9,6 +9,8 @@ import (
 	"os"
 	"strings"
 
+	"github.com/madflow/trivy-plugin-notify/environment"
+	"github.com/madflow/trivy-plugin-notify/providers"
 	"github.com/madflow/trivy-plugin-notify/providers/slack"
 	"github.com/madflow/trivy-plugin-notify/providers/webhook"
 )
@@ -31,26 +33,31 @@ func run(report interface{}) error {
 		return errors.New("please specify at least one notification provider")
 	}
 
-	providers := strings.Split(*providersFlag, ",")
-	for _, provider := range providers {
+	providersArg := strings.Split(*providersFlag, ",")
+	for _, provider := range providersArg {
 		if err := isSupported(provider); err != nil {
 			fmt.Println(err)
 			return err
 		}
 	}
 
+	providersPayload := providers.NotificationPayload{
+		EnvironmentCi: environment.DetectEnvironmentCi(),
+		TrivyReport:   report,
+	}
+
 	// Notify the providers
-	for _, provider := range providers {
+	for _, provider := range providersArg {
 		switch provider {
 		case "slack":
 			slackProvider := slack.New()
-			if err := slackProvider.Notify(report); err != nil {
+			if err := slackProvider.Notify(providersPayload); err != nil {
 				fmt.Println(err)
 				return err
 			}
 		case "webhook":
 			webhookProvider := webhook.New()
-			if err := webhookProvider.Notify(report); err != nil {
+			if err := webhookProvider.Notify(providersPayload); err != nil {
 				fmt.Println(err)
 				return err
 			}

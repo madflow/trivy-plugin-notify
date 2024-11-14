@@ -8,7 +8,16 @@
         "emoji": true
       }
     },
-    {{- range .Results }}
+    {{- if .EnvironmentCi }} 
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "CI provider: {{ .EnvironmentCi.Provider }}, Project: {{ .EnvironmentCi.Project }}"
+      }
+    },
+    {{- end }}
+    {{- range .TrivyReport.Results }}
       {{- if or (eq .Class "lang-pkgs") (eq .Class "os-pkgs") }} 
         {
           "type": "section",

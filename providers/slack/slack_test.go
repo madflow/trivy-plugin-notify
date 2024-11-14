@@ -9,7 +9,7 @@ import (
 )
 
 func Test_sendSlackMessage(t *testing.T) {
-	t.Run("webhook success", func(t *testing.T) {
+	t.Run("slack webhook success", func(t *testing.T) {
 		ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			if r.Method != "POST" {
 				t.Errorf("unexpected method: %v", r.Method)
