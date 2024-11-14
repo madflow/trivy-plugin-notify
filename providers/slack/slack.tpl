@@ -26,7 +26,15 @@
           }
         },
         {{- end }}
-        {{- if (gt (len .Vulnerabilities) 40) }}
+        {{- if kindIs "invalid" .Vulnerabilities }}
+          {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "_No vulnerabilities found_"
+            }
+          },
+        {{- else if (gt (len .Vulnerabilities) 40) }}
           {
             "type": "section",
             "text": {
@@ -64,7 +72,7 @@
                         {
                           "type": "link",
                           "url": "{{ .PrimaryURL }}",
-                          "text": "{{ .VulnerabilityID }}"
+                          "text": "{{ .VulnerabilityID }} "
                         },
                         {
                           "type": "text",
