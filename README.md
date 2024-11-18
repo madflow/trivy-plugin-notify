@@ -89,3 +89,32 @@ export WEBHOOK_ENDPOINT="https://example.com/webhook"
 ```shell
 trivy image -f json debian:12 | trivy notify --providers=webhook
 ```
+
+## CI/CD integration
+
+### Gitlab
+
+- Create CI Variable called `TRIVY_SLACK_WEBHOOK` with the URL of the Slack Incoming Webhook to which the message will be sent.
+
+```yaml
+security-scanning:
+  stage: cronjobs
+  image:
+    name: docker.io/aquasec/trivy:latest
+    entrypoint: [""]
+  cache:
+    paths:
+      - .trivycache/
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      when: always
+    - if: '$CI_PIPELINE_SOURCE != "schedule"'
+      when: never
+  script:
+    - trivy plugin install github.com/madflow/trivy-plugin-notify
+    - trivy repo --format json --scanners vuln -o plugin=notify --output-plugin-arg "--providers=slack" --scanners secret .
+  variables:
+    SLACK_WEBHOOK: $TRIVY_SLACK_WEBHOOK
+    TRIVY_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-db,aquasec/trivy-db,ghcr.io/aquasecurity/trivy-db
+    TRIVY_JAVA_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-java-db,aquasec/trivy-java-db,ghcr.io/aquasecurity/trivy-java-db
+```
