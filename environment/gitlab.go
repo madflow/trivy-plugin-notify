@@ -8,5 +8,6 @@ func GitlabEnvironment() EnvironmentCi {
 		Project:  os.Getenv("CI_PROJECT_NAME"),
 		Branch:   os.Getenv("CI_COMMIT_REF_NAME"),
 		Tag:      os.Getenv("CI_COMMIT_TAG"),
+		Url:      os.Getenv("CI_PROJECT_URL"),
 	}
 }

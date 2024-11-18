@@ -5,4 +5,5 @@ type EnvironmentCi struct {
 	Project  string
 	Branch   string
 	Tag      string
+	Url      string
 }

@@ -6,5 +6,6 @@ func LocalEnvironment() EnvironmentCi {
 		Project:  "local",
 		Branch:   "local",
 		Tag:      "local",
+		Url:      "local",
 	}
 }
