@@ -11,6 +11,8 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/google/go-cmp/cmp"
+
 	"github.com/madflow/trivy-plugin-notify/environment"
 	"github.com/madflow/trivy-plugin-notify/providers"
 )
@@ -101,11 +103,9 @@ func Test_notify(t *testing.T) {
 
 		// Compare the captured request with the existing snapshot
 		if !bytes.Equal(capturedRequest, expectedSnapshot) {
-			t.Errorf(
-				"request payload does not match snapshot:\nGot:\n%s\nExpected:\n%s",
-				capturedRequest,
-				expectedSnapshot,
-			)
+			diff := cmp.Diff(string(expectedSnapshot), string(capturedRequest))
+			t.Errorf("request payload does not match snapshot:\nDiff (-expected +got):\n%s", diff)
 		}
+
 	})
 }
