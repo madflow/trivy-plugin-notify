@@ -15,6 +15,9 @@ func SetupMockServer(t *testing.T, capturedRequest *[]byte) *httptest.Server {
 		}
 		*capturedRequest = body
 		w.Header().Set("Content-Type", "application/json")
-		io.WriteString(w, `{ "ok": true }`)
+		_, err = io.WriteString(w, `{ "ok": true }`)
+		if err != nil {
+			t.Errorf("failed to write response: %v", err)
+		}
 	}))
 }

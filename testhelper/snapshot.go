@@ -29,7 +29,7 @@ func HandleSnapshot(t *testing.T, snapshotPath string, actual []byte) {
 		if err != nil {
 			t.Fatalf("failed to create snapshot directory: %v", err)
 		}
-		err = os.WriteFile(snapshotPath, actual, 0644)
+		err = os.WriteFile(snapshotPath, actual, 0o644)
 		if err != nil {
 			t.Fatalf("failed to write snapshot file: %v", err)
 		}

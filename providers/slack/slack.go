@@ -38,13 +38,11 @@ func (p *ProviderSlack) Notify(data providers.NotificationPayload) error {
 	}
 
 	tpl, err := template.New("slack").Funcs(sprig.GenericFuncMap()).Parse(string(templateBuffer))
-
 	if err != nil {
 		return err
 	}
 
 	err = tpl.Execute(wr, data)
-
 	if err != nil {
 		return err
 	}
@@ -58,7 +56,6 @@ func (p *ProviderSlack) Notify(data providers.NotificationPayload) error {
 }
 
 func sendSlackMessage(webhookUrl string, messageBuffer *bytes.Buffer) error {
-
 	httpClient := &http.Client{}
 
 	req, err := http.NewRequest("POST", webhookUrl, messageBuffer)
@@ -72,6 +69,8 @@ func sendSlackMessage(webhookUrl string, messageBuffer *bytes.Buffer) error {
 	if err != nil {
 		return err
 	}
+
+	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
 		return errors.New("failed to send slack message")
