@@ -4,6 +4,7 @@ A [Trivy](https://github.com/aquasecurity/trivy) plugin for sending notification
 
 The currently supported providers are:
 
+- Email
 - Webhook
 - Slack
 
@@ -41,6 +42,57 @@ trivy image -f json debian:12 | trivy notify --providers=slack,webhook
 ```
 
 ## Providers
+
+### Email
+
+This provider can be used to send notifications via email using SMTP.
+
+Currently, only `vuln` scanning results are supported.
+
+#### Requirements
+
+- Set up an SMTP server and obtain the necessary credentials.
+- Configure the required environment variables with your SMTP and email details.
+
+#### Environment Variables
+
+```shell
+export EMAIL_DSN="smtps://user:password@smtp.example.com:465"
+export EMAIL_FROM="from@example.com"
+export EMAIL_TO="to@example.com"
+```
+
+`EMAIL_DSN`: The SMTP connection string in the format:
+
+```shell
+smtp://<user>:<password>@<host>:<port> or smtps://<user>:<password>@<host>:<port>
+```
+
+Example:
+
+    For plain SMTP: smtp://user:password@smtp.example.com:587
+    For SMTPS (TLS): smtps://user:password@smtp.example.com:465
+
+Parameters:
+
+    <user>: The username or email address used for SMTP authentication.
+    <password>: The password for the SMTP server.
+    <host>: The hostname of the SMTP server (e.g., smtp.example.com).
+    <port>: The port used by the SMTP server (e.g., 587 for SMTP, 465 for SMTPS).
+
+`EMAIL_FROM`: The sender's email address (e.g., from@example.com).
+
+`EMAIL_TO`: The recipient's email address(es). Multiple recipients can be specified, separated by commas (e.g., to@example.com, another@example.com).
+
+#### Example Configuration
+
+```shell
+export SMTP_HOST="smtp.example.com"
+export SMTP_PORT="587"
+export EMAIL_USER="your-email@example.com"
+export EMAIL_PASSWORD="your-password"
+export EMAIL_TO="recipient@example.com"
+```
 
 ### Slack
 

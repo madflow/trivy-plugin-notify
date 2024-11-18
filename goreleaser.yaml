@@ -1,7 +1,8 @@
+version: 2
 project_name: trivy_plugin_notify
 builds:
   - main: .
-    binary: notify
+    binary: count
     ldflags:
       - -s -w
       - "-extldflags '-static'"
