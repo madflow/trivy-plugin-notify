@@ -38,7 +38,7 @@ Vulnerabilities
 {{- range .Vulnerabilities }}
 
 - {{ .Severity }}: {{ .VulnerabilityID }} ({{ .PrimaryURL }})  
-- Package: `{{ .PkgName }} v{{ .InstalledVersion }}`  
+- Package: `{{ .PkgName }} {{ .InstalledVersion }}`  
 - {{- if kindIs "string" .FixedVersion }} Upgrade to: `{{ .FixedVersion }}`  
   {{- else }} No fixed version available.  
   {{- end }}

@@ -94,7 +94,7 @@
                 },
                 {
                   "type": "text",
-                  "text": "{{ .PkgName }} v{{ .InstalledVersion }}",
+                  "text": "{{ .PkgName }} {{ .InstalledVersion }}",
                   "style": {
                     "code": true
                   }
