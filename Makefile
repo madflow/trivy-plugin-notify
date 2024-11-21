@@ -1,4 +1,4 @@
-.PHONY: clean build test
+.PHONY: clean build lint test
 
 clean:
 	rm -f notify
@@ -8,3 +8,6 @@ build:
 
 test:
 	go test -v ./...
+
+lint:
+	golangci-lint run

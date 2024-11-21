@@ -93,15 +93,12 @@ func Test_sendWebhookMessage(t *testing.T) {
 }
 
 func runNotificationTest(t *testing.T, fixtureFile, snapshotFile string) {
-	// Load fixture data
 	fixtureData := testhelper.MustReadFile(t, fixtureFile)
 
 	var capturedRequest []byte
-	// Set up the mock server
 	ts := testhelper.SetupMockServer(t, &capturedRequest)
 	defer ts.Close()
 
-	// Set up the test environment and provider
 	os.Setenv("WEBHOOK_URL", ts.URL)
 	webhookProvider := New()
 

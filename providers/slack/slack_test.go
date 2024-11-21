@@ -33,18 +33,16 @@ func runNotificationTest(t *testing.T, fixtureFile, snapshotFile string) {
 		TrivyReport:   report,
 	}
 
-	// Call Notify
 	err := slackProvider.Notify(notificationPayload)
 	if err != nil {
 		t.Errorf("unexpected error: %v", err)
 	}
 
-	// Handle snapshot
 	testhelper.HandleSnapshot(t, snapshotFile, capturedRequest)
 }
 
 func Test_notify(t *testing.T) {
-	t.Run("notify slack webhook success snapshot", func(t *testing.T) {
+	t.Run("notify slack webhook snapshot", func(t *testing.T) {
 		fixtureName := "v0.57.0_vuln_secret_misconf.json"
 		fixtureFile := fmt.Sprintf("./testdata/%s", fixtureName)
 		snapshotFile := fmt.Sprintf("./testdata/snapshots/%s", fixtureName)
