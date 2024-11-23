@@ -84,16 +84,6 @@ Parameters:
 
 `EMAIL_TO`: The recipient's email address(es). Multiple recipients can be specified, separated by commas (e.g., to@example.com, another@example.com).
 
-#### Example Configuration
-
-```shell
-export SMTP_HOST="smtp.example.com"
-export SMTP_PORT="587"
-export EMAIL_USER="your-email@example.com"
-export EMAIL_PASSWORD="your-password"
-export EMAIL_TO="recipient@example.com"
-```
-
 ### Slack
 
 This provider can be used to send notifications to a Slack channel through an HTTP webhook.
