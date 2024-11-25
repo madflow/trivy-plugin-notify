@@ -11,6 +11,7 @@ import (
 
 	"github.com/madflow/trivy-plugin-notify/environment"
 	"github.com/madflow/trivy-plugin-notify/providers"
+	"github.com/madflow/trivy-plugin-notify/providers/console"
 	"github.com/madflow/trivy-plugin-notify/providers/email"
 	"github.com/madflow/trivy-plugin-notify/providers/slack"
 	"github.com/madflow/trivy-plugin-notify/providers/webhook"
@@ -50,6 +51,12 @@ func run(report interface{}) error {
 	// Notify the providers
 	for _, provider := range providersArg {
 		switch provider {
+		case "console":
+			consoleProvider := console.New()
+			if err := consoleProvider.Notify(providersPayload); err != nil {
+				fmt.Println(err)
+				return err
+			}
 		case "email":
 			emailProvider := email.New()
 			if err := emailProvider.Notify(providersPayload); err != nil {
@@ -76,6 +83,8 @@ func run(report interface{}) error {
 
 func isSupported(provider string) error {
 	switch provider {
+	case "console":
+		return nil
 	case "email":
 		return nil
 	case "slack":
