@@ -4,8 +4,7 @@ func LocalEnvironment() EnvironmentCi {
 	return EnvironmentCi{
 		Provider: "local",
 		Project:  "local",
-		Branch:   "local",
-		Tag:      "local",
+		Ref:      "local",
 		Url:      "local",
 	}
 }

@@ -13,7 +13,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "CI provider: {{ .EnvironmentCi.Provider }}, Project: {{ .EnvironmentCi.Project }}, Branch: {{ .EnvironmentCi.Branch }}, Url: {{ .EnvironmentCi.Url }}"
+        "text": "CI provider: {{ .EnvironmentCi.Provider }}, Project: {{ .EnvironmentCi.Project }}, Ref: {{ .EnvironmentCi.Ref }}, Url: {{ .EnvironmentCi.Url }}"
       }
     },
     {{- end }}
