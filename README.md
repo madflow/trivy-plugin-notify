@@ -4,6 +4,7 @@ A [Trivy](https://github.com/aquasecurity/trivy) plugin for sending notification
 
 The currently supported providers are:
 
+- Console
 - Email
 - Webhook
 - Slack
@@ -42,6 +43,10 @@ trivy image -f json debian:12 | trivy notify --providers=slack,webhook
 ```
 
 ## Providers
+
+### Console
+
+This provider can be used to pretty print the results in the console. Mainly for debugging purposes.
 
 ### Email
 
