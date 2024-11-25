@@ -6,6 +6,8 @@ func DetectEnvironmentCi() EnvironmentCi {
 	if DetectInCi() {
 		if DetectGitlabCi() {
 			return GitlabEnvironment()
+		} else if DetectGithubCi() {
+			return GithubEnvironment()
 		}
 	}
 	return LocalEnvironment()
@@ -13,6 +15,10 @@ func DetectEnvironmentCi() EnvironmentCi {
 
 func DetectInCi() bool {
 	return os.Getenv("CI") != ""
+}
+
+func DetectGithubCi() bool {
+	return os.Getenv("GITHUB_ACTIONS") != ""
 }
 
 func DetectGitlabCi() bool {

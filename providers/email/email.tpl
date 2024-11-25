@@ -4,7 +4,7 @@ Trivy Report
 {{- if .EnvironmentCi }}
 CI Provider: {{ .EnvironmentCi.Provider }}  
 Project: {{ .EnvironmentCi.Project }}  
-Branch: {{ .EnvironmentCi.Branch }}  
+Ref: {{ .EnvironmentCi.Ref }}  
 URL: [Link]({{ .EnvironmentCi.Url }})
 ---
 

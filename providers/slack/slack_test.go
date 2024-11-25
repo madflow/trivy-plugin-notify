@@ -22,6 +22,8 @@ func runNotificationTest(t *testing.T, fixtureFile, snapshotFile string) {
 
 	// Set up the test environment and provider
 	os.Setenv("SLACK_WEBHOOK", ts.URL)
+	// Make sure we have the same result in every environment
+	os.Setenv("CI", "")
 	slackProvider := New()
 
 	var report interface{}
