@@ -1,13 +1,13 @@
 # trivy-plugin-notify
 
-A [Trivy](https://github.com/aquasecurity/trivy) plugin for sending notifications to a one ore more providers.
+A [Trivy](https://github.com/aquasecurity/trivy) plugin for sending notifications to a one or more providers.
 
 The currently supported providers are:
 
-- Console
-- Email
-- Webhook
-- Slack
+- console
+- email
+- slack
+- webhook
 
 Providers can be configured via environment variables.
 Multiple providers can be configured via the `--providers` flag as a comma-separated list.
@@ -46,7 +46,7 @@ trivy image -f json debian:12 | trivy notify --providers=slack,webhook
 
 ### Console
 
-This provider can be used to pretty print the results in the console. Mainly for debugging purposes.
+This provider can be used to pretty-print the results in the console, mainly for debugging purposes.
 
 ### Email
 
@@ -56,8 +56,8 @@ Currently, only `vuln` scanning results are supported.
 
 #### Requirements
 
-- Set up an SMTP server and obtain the necessary credentials.
-- Configure the required environment variables with your SMTP and email details.
+- Set up an SMTP server and obtain the necessary credentials
+- Configure the required environment variables with your SMTP and email details
 
 #### Environment Variables
 
@@ -80,10 +80,10 @@ Example:
 
 Parameters:
 
-    <user>: The username or email address used for SMTP authentication.
-    <password>: The password for the SMTP server.
-    <host>: The hostname of the SMTP server (e.g., smtp.example.com).
-    <port>: The port used by the SMTP server (e.g., 587 for SMTP, 465 for SMTPS).
+- `<user>`: The username or email address used for SMTP authentication
+- `<password>`: The password for the SMTP server
+- `<host>`: The hostname of the SMTP server (e.g., smtp.example.com)
+- `<port>`: The port used by the SMTP server (e.g., 587 for SMTP, 465 for SMTPS)
 
 `EMAIL_FROM`: The sender's email address (e.g., from@example.com).
 
@@ -116,7 +116,7 @@ trivy image -f json debian:12 | trivy notify --providers=slack
 
 ### Webhook
 
-The `webhook` package allows sending JSON-formatted messages to a specified URL endpoint using HTTP methods like `POST` or `GET`. It is used to send a `types.Report` (from `github.com/aquasecurity/trivy/pkg/types`) payload to an endpoint specified by an environment variable.
+This provider allows sending JSON-formatted messages to a specified URL endpoint using HTTP methods like `POST` or `GET`. It is used to send a `types.Report` (from `github.com/aquasecurity/trivy/pkg/types`) payload to an endpoint specified by an environment variable.
 
 #### Requirements
 
