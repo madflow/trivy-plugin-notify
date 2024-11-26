@@ -9,8 +9,9 @@ The currently supported providers are:
 - slack
 - webhook
 
-Providers can be configured via environment variables.
-Multiple providers can be configured via the `--providers` flag as a comma-separated list.
+* Providers can be configured via environment variables.
+* Multiple providers can be configured via the `--providers` flag as a comma-separated list.
+* When `--send-always` is set, the plugin will send notifications even if no scan results were found.
 
 ## Installation
 
@@ -40,6 +41,10 @@ trivy image -f json debian:12 | trivy notify --providers=slack
 
 ```shell
 trivy image -f json debian:12 | trivy notify --providers=slack,webhook
+```
+
+```shell
+trivy image -f json golang:alpine | trivy notify --providers=slack,webhook --send-always
 ```
 
 ## Providers
