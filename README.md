@@ -9,9 +9,9 @@ The currently supported providers are:
 - slack
 - webhook
 
-* Providers can be configured via environment variables.
-* Multiple providers can be configured via the `--providers` flag as a comma-separated list.
-* When `--send-always` is set, the plugin will send notifications even if no scan results were found.
+Providers can be configured via environment variables.
+Multiple providers can be configured via the `--providers` flag as a comma-separated list.
+When `--send-always` is set, the plugin will send notifications even if no scan results were found.
 
 ## Installation
 
