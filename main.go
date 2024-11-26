@@ -29,10 +29,19 @@ func main() {
 
 func run(report interface{}) error {
 	providersFlag := flag.String("providers", "", "Notification providers (comma separated)")
+	sendAlways := flag.Bool("send-always", false, "Always send notifications. Even when there are no results.")
 	flag.Parse()
 
 	if *providersFlag == "" {
 		return errors.New("please specify at least one notification provider")
+	}
+
+	// Check if the "Results" key is missing in the report
+	// If the the flag is set to false, we don't send empty results
+	if !*sendAlways {
+		if _, ok := report.(map[string]interface{})["Results"]; !ok {
+			return nil
+		}
 	}
 
 	providersArg := strings.Split(*providersFlag, ",")
