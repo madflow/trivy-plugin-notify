@@ -47,7 +47,6 @@ func run(report interface{}) error {
 	providersArg := strings.Split(*providersFlag, ",")
 	for _, provider := range providersArg {
 		if err := isSupported(provider); err != nil {
-			fmt.Println(err)
 			return err
 		}
 	}
@@ -63,25 +62,21 @@ func run(report interface{}) error {
 		case "console":
 			consoleProvider := console.New()
 			if err := consoleProvider.Notify(providersPayload); err != nil {
-				fmt.Println(err)
 				return err
 			}
 		case "email":
 			emailProvider := email.New()
 			if err := emailProvider.Notify(providersPayload); err != nil {
-				fmt.Println(err)
 				return err
 			}
 		case "slack":
 			slackProvider := slack.New()
 			if err := slackProvider.Notify(providersPayload); err != nil {
-				fmt.Println(err)
 				return err
 			}
 		case "webhook":
 			webhookProvider := webhook.New()
 			if err := webhookProvider.Notify(providersPayload); err != nil {
-				fmt.Println(err)
 				return err
 			}
 		}
