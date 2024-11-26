@@ -1,0 +1,26 @@
+name: Install test
+on:
+  schedule:
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Install test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Trivy
+        env:
+          TRIVY_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-db,aquasec/trivy-db,ghcr.io/aquasecurity/trivy-db
+          TRIVY_JAVA_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-java-db,aquasec/trivy-java-db,ghcr.io/aquasecurity/trivy-java-db
+        uses: aquasecurity/setup-trivy@v0.2.2
+        with:
+          version: v0.57.1
+      - name: Install Plugin
+        run: |
+          trivy plugin install github.com/madflow/trivy-plugin-notify
+      - name: Run Trivy with plugin
+        run: trivy fs -f json -o plugin=notify --output-plugin-arg "--providers=console" .
