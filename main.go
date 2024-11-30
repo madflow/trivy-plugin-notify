@@ -10,11 +10,11 @@ import (
 	"strings"
 
 	"github.com/madflow/trivy-plugin-notify/environment"
-	"github.com/madflow/trivy-plugin-notify/providers"
-	"github.com/madflow/trivy-plugin-notify/providers/console"
-	"github.com/madflow/trivy-plugin-notify/providers/email"
-	"github.com/madflow/trivy-plugin-notify/providers/slack"
-	"github.com/madflow/trivy-plugin-notify/providers/webhook"
+	"github.com/madflow/trivy-plugin-notify/provider"
+	"github.com/madflow/trivy-plugin-notify/provider/console"
+	"github.com/madflow/trivy-plugin-notify/provider/email"
+	"github.com/madflow/trivy-plugin-notify/provider/slack"
+	"github.com/madflow/trivy-plugin-notify/provider/webhook"
 )
 
 func main() {
@@ -51,7 +51,7 @@ func run(report interface{}) error {
 		}
 	}
 
-	providersPayload := providers.NotificationPayload{
+	providersPayload := provider.NotificationPayload{
 		EnvironmentCi: environment.DetectEnvironmentCi(),
 		TrivyReport:   report,
 	}

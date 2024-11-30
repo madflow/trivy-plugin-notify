@@ -13,7 +13,7 @@ import (
 	"strings"
 
 	"github.com/Masterminds/sprig/v3"
-	"github.com/madflow/trivy-plugin-notify/providers"
+	"github.com/madflow/trivy-plugin-notify/provider"
 )
 
 //go:embed email.tpl
@@ -29,7 +29,7 @@ func (p *ProviderEmail) Name() string {
 	return "email"
 }
 
-func (p *ProviderEmail) Notify(data providers.NotificationPayload) error {
+func (p *ProviderEmail) Notify(data provider.NotificationPayload) error {
 	dsn := os.Getenv("EMAIL_DSN")
 	if dsn == "" {
 		return errors.New("EMAIL_DSN is not set")
