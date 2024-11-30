@@ -1,4 +1,4 @@
-package providers
+package provider
 
 import "github.com/madflow/trivy-plugin-notify/environment"
 

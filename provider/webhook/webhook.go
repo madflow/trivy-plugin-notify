@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/madflow/trivy-plugin-notify/providers"
+	"github.com/madflow/trivy-plugin-notify/provider"
 )
 
 var allowedMethods = map[string]bool{
@@ -26,7 +26,7 @@ func (p *ProviderWebhook) Name() string {
 	return "slack"
 }
 
-func (p *ProviderWebhook) Notify(data providers.NotificationPayload) error {
+func (p *ProviderWebhook) Notify(data provider.NotificationPayload) error {
 	webhookUrl := os.Getenv("WEBHOOK_URL")
 	if webhookUrl == "" {
 		return errors.New("WEBHOOK_URL environment variable is not set")

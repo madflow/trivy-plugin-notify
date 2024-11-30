@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/madflow/trivy-plugin-notify/providers"
+	"github.com/madflow/trivy-plugin-notify/provider"
 )
 
 func New() *ProviderConsole {
@@ -17,7 +17,7 @@ func (p *ProviderConsole) Name() string {
 	return "console"
 }
 
-func (p *ProviderConsole) Notify(data providers.NotificationPayload) error {
+func (p *ProviderConsole) Notify(data provider.NotificationPayload) error {
 	dataJson, err := json.MarshalIndent(data, "", "  ")
 	if err != nil {
 		return err

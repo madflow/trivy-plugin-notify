@@ -9,7 +9,7 @@ import (
 	"os"
 
 	"github.com/Masterminds/sprig/v3"
-	"github.com/madflow/trivy-plugin-notify/providers"
+	"github.com/madflow/trivy-plugin-notify/provider"
 )
 
 //go:embed slack.tpl
@@ -25,7 +25,7 @@ func (p *ProviderSlack) Name() string {
 	return "slack"
 }
 
-func (p *ProviderSlack) Notify(data providers.NotificationPayload) error {
+func (p *ProviderSlack) Notify(data provider.NotificationPayload) error {
 	webhookUrl := os.Getenv("SLACK_WEBHOOK")
 	if webhookUrl == "" {
 		return errors.New("SLACK_WEBHOOK  environment variable is not set")

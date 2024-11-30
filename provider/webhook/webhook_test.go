@@ -9,7 +9,7 @@ import (
 	"testing"
 
 	"github.com/madflow/trivy-plugin-notify/environment"
-	"github.com/madflow/trivy-plugin-notify/providers"
+	"github.com/madflow/trivy-plugin-notify/provider"
 	"github.com/madflow/trivy-plugin-notify/testhelper"
 )
 
@@ -106,7 +106,7 @@ func runNotificationTest(t *testing.T, fixtureFile, snapshotFile string) {
 	if err := json.Unmarshal(fixtureData, &report); err != nil {
 		t.Fatalf("failed to unmarshal fixture data: %v", err)
 	}
-	notificationPayload := providers.NotificationPayload{
+	notificationPayload := provider.NotificationPayload{
 		EnvironmentCi: environment.DetectEnvironmentCi(),
 		TrivyReport:   report,
 	}
