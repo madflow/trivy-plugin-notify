@@ -1,0 +1,40 @@
+{
+  "SchemaVersion": 2,
+  "CreatedAt": "2024-12-04T14:38:33.520442+01:00",
+  "ArtifactName": ".",
+  "ArtifactType": "repository",
+  "Metadata": {
+    "ImageConfig": {
+      "architecture": "",
+      "created": "0001-01-01T00:00:00Z",
+      "os": "",
+      "rootfs": {
+        "type": "",
+        "diff_ids": null
+      },
+      "config": {}
+    }
+  },
+  "Results": [
+    {
+      "Target": "api/composer.lock",
+      "Class": "lang-pkgs",
+      "Type": "composer"
+    },
+    {
+      "Target": "app/yarn.lock",
+      "Class": "lang-pkgs",
+      "Type": "yarn"
+    },
+    {
+      "Target": "e2e/yarn.lock",
+      "Class": "lang-pkgs",
+      "Type": "yarn"
+    },
+    {
+      "Target": "sth/yarn.lock",
+      "Class": "lang-pkgs",
+      "Type": "yarn"
+    }
+  ]
+}

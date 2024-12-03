@@ -2,6 +2,8 @@ package main
 
 import (
 	"testing"
+
+	"github.com/madflow/trivy-plugin-notify/util"
 )
 
 type testPayload struct {
@@ -10,7 +12,8 @@ type testPayload struct {
 
 func Test_run(t *testing.T) {
 	t.Run("run", func(t *testing.T) {
-		err := run(testPayload{})
+		stats := util.Statistics{}
+		_, err := run(testPayload{}, stats)
 		if err == nil {
 			t.Errorf("expected an error")
 		}
