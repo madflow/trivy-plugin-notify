@@ -56,7 +56,7 @@ func run(report interface{}, stats util.Statistics) (*LogMessage, error) {
 	flag.Parse()
 
 	if *providersFlag == "" {
-		return &LogMessage{Level: "error", Message: "No notification providers specified"}, errors.New("Please specify at least one notification provider")
+		return &LogMessage{Level: "error", Message: "No notification providers specified."}, errors.New("Please specify at least one notification provider.")
 	}
 
 	providersArg := strings.Split(*providersFlag, ",")
@@ -69,7 +69,7 @@ func run(report interface{}, stats util.Statistics) (*LogMessage, error) {
 	// Check if the "Results" key is missing in the report
 	// If the the flag is set to false, we don't send empty results
 	if !*sendAlways && stats.Total == 0 {
-		return &LogMessage{Level: "info", Message: "No scan results found in the report and send-always is false. Skipping all notifications"}, nil
+		return &LogMessage{Level: "info", Message: "No scan results found in the report and send-always is false. Skipping all notifications."}, nil
 	}
 
 	providersPayload := provider.NotificationPayload{
@@ -87,7 +87,7 @@ func run(report interface{}, stats util.Statistics) (*LogMessage, error) {
 			}
 		case "email":
 			if stats.Vulnerabilities == 0 {
-				return &LogMessage{Level: "info", Message: "No vulnerabilities in the report found, skipping email notification"}, nil
+				return &LogMessage{Level: "info", Message: "No vulnerabilities in the report found, skipping email notification."}, nil
 			}
 			emailProvider := email.New()
 			if err := emailProvider.Notify(providersPayload); err != nil {
@@ -95,7 +95,7 @@ func run(report interface{}, stats util.Statistics) (*LogMessage, error) {
 			}
 		case "slack":
 			if stats.Vulnerabilities == 0 {
-				return &LogMessage{Level: "info", Message: "No vulnerabilities found in the report, skipping slack notification"}, nil
+				return &LogMessage{Level: "info", Message: "No vulnerabilities found in the report, skipping slack notification."}, nil
 			}
 			slackProvider := slack.New()
 			if err := slackProvider.Notify(providersPayload); err != nil {
@@ -109,7 +109,7 @@ func run(report interface{}, stats util.Statistics) (*LogMessage, error) {
 		}
 	}
 
-	return &LogMessage{Level: "info", Message: "All notifications sent successfully"}, nil
+	return &LogMessage{Level: "info", Message: "All notifications sent successfully."}, nil
 }
 
 func isSupported(provider string) error {
