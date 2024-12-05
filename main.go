@@ -86,7 +86,7 @@ func run(report interface{}, stats util.Statistics) (*LogMessage, error) {
 				return &LogMessage{Level: "error", Message: fmt.Sprintf("Console provider failed: %s", err)}, err
 			}
 		case "email":
-			if stats.Vulnerabilities == 0 {
+			if stats.Vulnerabilities == 0 && !*sendAlways {
 				return &LogMessage{Level: "info", Message: "No vulnerabilities in the report found, skipping email notification."}, nil
 			}
 			emailProvider := email.New()
@@ -94,7 +94,7 @@ func run(report interface{}, stats util.Statistics) (*LogMessage, error) {
 				return &LogMessage{Level: "error", Message: fmt.Sprintf("Email provider failed: %s", err)}, err
 			}
 		case "slack":
-			if stats.Vulnerabilities == 0 {
+			if stats.Vulnerabilities == 0 && !*sendAlways {
 				return &LogMessage{Level: "info", Message: "No vulnerabilities found in the report, skipping slack notification."}, nil
 			}
 			slackProvider := slack.New()
