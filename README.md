@@ -11,6 +11,7 @@ The currently supported providers are:
 
 Providers can be configured via environment variables.
 Multiple providers can be configured via the `--providers` flag as a comma-separated list.
+
 When `--send-always` is set, the plugin will send notifications even if no scan results were found.
 
 ## Installation
@@ -57,7 +58,7 @@ This provider can be used to pretty-print the results in the console, mainly for
 
 This provider can be used to send notifications via email using SMTP.
 
-Currently, only `vuln` scanning results are supported.
+Currently, only `vuln` scanning results are supported. If there are no vulnerabilities found in the scan report, sending emails will be skipped.
 
 #### Requirements
 
@@ -98,7 +99,7 @@ Parameters:
 
 This provider can be used to send notifications to a Slack channel through an HTTP webhook.
 
-Currently only `vuln` scanning results are supported.
+Currently only `vuln` scanning results are supported. If there are no vulnerabilities found in the scan report, sending Slack notifications will be skipped.
 
 #### Requirements
 
