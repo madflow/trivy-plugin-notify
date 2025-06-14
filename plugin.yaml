@@ -1,5 +1,5 @@
 name: "notify"
-version: "0.0.9"
+version: "0.0.11"
 repository: github.com/madflow/trivy-plugin-notify
 maintainer: madflow
 summary: Vulnerability notification
@@ -11,20 +11,20 @@ platforms:
   - selector:
       os: darwin
       arch: amd64
-    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.9/trivy_plugin_notify_0.0.9_darwin-amd64.tar.gz
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.11/trivy_plugin_notify_0.0.11_darwin-amd64.tar.gz
     bin: ./notify
   - selector:
       os: darwin
       arch: arm64
-    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.9/trivy_plugin_notify_0.0.9_darwin-arm64.tar.gz
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.11/trivy_plugin_notify_0.0.11_darwin-arm64.tar.gz
     bin: ./notify
   - selector:
       os: linux
       arch: amd64
-    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.9/trivy_plugin_notify_0.0.9_linux-amd64.tar.gz
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.11/trivy_plugin_notify_0.0.11_linux-amd64.tar.gz
     bin: ./notify
   - selector:
       os: linux
       arch: arm64
-    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.9/trivy_plugin_notify_0.0.9_linux-arm64.tar.gz
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.11/trivy_plugin_notify_0.0.11_linux-arm64.tar.gz
     bin: ./notify
