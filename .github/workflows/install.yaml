@@ -6,19 +6,23 @@ on:
 
 jobs:
   build:
-    name: Install test
+    name: Install test (Trivy ${{ matrix.trivy-version }})
     runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        trivy-version: ['v0.57.1', 'v0.63.0']
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Trivy
+      - name: Install Trivy ${{ matrix.trivy-version }}
         env:
           TRIVY_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-db,aquasec/trivy-db,ghcr.io/aquasecurity/trivy-db
           TRIVY_JAVA_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-java-db,aquasec/trivy-java-db,ghcr.io/aquasecurity/trivy-java-db
-        uses: aquasecurity/setup-trivy@v0.2.2
+        uses: aquasecurity/setup-trivy@v0.2.3 
         with:
-          version: v0.57.1
+          version: ${{ matrix.trivy-version }}
       - name: Install Plugin
         run: |
           trivy plugin install github.com/madflow/trivy-plugin-notify
