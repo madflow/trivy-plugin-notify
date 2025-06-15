@@ -25,7 +25,7 @@ type LogMessage struct {
 
 func main() {
 	logger := util.NewLogger("trivy-plugin-notify")
-	var report interface{}
+	var report any
 	if err := json.NewDecoder(os.Stdin).Decode(&report); err != nil {
 		logger.Fatal("Failed to read stdin. please make sure to use the --json flag")
 	}
@@ -50,13 +50,13 @@ func main() {
 	}
 }
 
-func run(report interface{}, stats util.Statistics) (*LogMessage, error) {
+func run(report any, stats util.Statistics) (*LogMessage, error) {
 	providersFlag := flag.String("providers", "", "Notification providers (comma separated)")
 	sendAlways := flag.Bool("send-always", false, "Always send notifications. Even when there are no results.")
 	flag.Parse()
 
 	if *providersFlag == "" {
-		return &LogMessage{Level: "error", Message: "No notification providers specified."}, errors.New("Please specify at least one notification provider.")
+		return &LogMessage{Level: "error", Message: "No notification providers specified."}, errors.New("please specify at least one notification provider")
 	}
 
 	providersArg := strings.Split(*providersFlag, ",")
@@ -123,5 +123,5 @@ func isSupported(provider string) error {
 	case "webhook":
 		return nil
 	}
-	return fmt.Errorf("Provider %s is not supported", provider)
+	return fmt.Errorf("provider %s is not supported", provider)
 }

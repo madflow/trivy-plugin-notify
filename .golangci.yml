@@ -1,9 +1,28 @@
+version: "2"
 run:
   go: "1.23"
-  timeout: 5m
 linters:
   enable:
-    - gofumpt
     - bodyclose
-    - misspell
     - gocritic
+    - misspell
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gofumpt
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
