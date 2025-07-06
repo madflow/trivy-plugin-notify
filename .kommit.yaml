@@ -41,6 +41,7 @@ rules: |
   7. When only changes in .github folder have been made, use the "chore" type
   8. Prefer the "fix" type over the "refactor" type
   9. Important: When the current "branch name" on the Repository context is in the format <type>/<scope> the commit type should always be this type.  
+  10. When only the .kommit.yml has been changed, use the "chore" type
 
   Example for a branch name rule:
   - The branch name is chore/docs-update
