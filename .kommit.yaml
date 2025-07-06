@@ -44,16 +44,16 @@ rules: |
 
   Example for a branch name rule:
   - The branch name is chore/docs-update
-  - The commit type should be: "chore(docs): update documentation"
+  - The commit type should be: "chore: update documentation"
 
   General Examples:
-  feat(auth): add login functionality
+  feat: add login functionality
   
   - Implement JWT token generation on successful login
   - Add login form validation
   - Update authentication middleware
 
-  docs(readme):📚 updated usage instructions
+  docs:📚 updated usage instructions
   
   - Updated instrcutions on how to use the application
   - Added usage examples
