@@ -6,11 +6,11 @@
       "extra-files": [
         {
           "type": "yaml",
-          "path": "plugin.yml",
+          "path": "plugin.yaml",
           "jsonpath": "$.version"
         }
       ],
-      "version-file": "plugin.yml"
+      "version-file": "plugin.yaml"
     }
   }
 }
