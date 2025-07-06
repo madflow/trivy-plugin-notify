@@ -1,0 +1,69 @@
+# Kommit Configuration Example - Conventional Commits
+# Place this file in one of these locations:
+# - $PWD/.kommit.yaml
+# - $GIT_DIR/.konfig.yaml (if in a git repository)
+# - $XDG_CONFIG_HOME/kommit/config.yaml
+# - $HOME/.config/kommit/config.yaml
+# - $HOME/.kommit.yaml
+
+# Ollama API configuration
+ollama:
+  # URL of the Ollama API server
+  server_url: "http://localhost:11434/api/generate"
+  # Model to use for generating commit messages
+  model: "qwen2.5-coder:7b"
+
+# Rules for generating conventional commit messages
+rules: |
+  Follow the Conventional Commits specification (https://www.conventionalcommits.org/)
+  
+  Format: <type>: <description>
+  [optional body]
+  [optional footer(s)]
+  
+  Types:
+  - feat: A new feature
+  - fix: A bug fix
+  - docs: Documentation only changes (when only the README.md has been changed)
+  - style: Changes that do not affect the meaning of the code (white-space, formatting, etc)
+  - refactor: A code change that neither fixes a bug nor adds a feature
+  - perf: A code change that improves performance
+  - test: Adding missing tests or correcting existing tests
+  - chore: Changes to the build process or auxiliary tools and libraries
+
+  Rules:
+  1. Use the imperative, present tense ("add feature" not "added feature")
+  2. Do not capitalize the first letter of the description
+  3. No dot (.) at the end of the description
+  4. Keep the subject line under 80 characters
+  5. Consider starting the commit message after the <scope>: part with an applicable emoji
+  6. When only the README.md has been changed, use the "docs" type
+  7. When only changes in .github folder have been made, use the "chore" type
+  8. Prefer the "fix" type over the "refactor" type
+  9. Important: When the current "branch name" on the Repository context is in the format <type>/<scope> the commit type should always be this type.  
+
+  Example for a branch name rule:
+  - The branch name is chore/docs-update
+  - The commit type should be: "chore(docs): update documentation"
+
+  General Examples:
+  feat(auth): add login functionality
+  
+  - Implement JWT token generation on successful login
+  - Add login form validation
+  - Update authentication middleware
+
+  docs(readme):📚 updated usage instructions
+  
+  - Updated instrcutions on how to use the application
+  - Added usage examples
+  
+  Emoji Reference:
+  ✨ feat: New feature
+  🐛 fix: Bug fix
+  📚 docs: Documentation
+  💄 style: Code style
+  ♻️ refactor: Code refactoring
+  ⚡ perf: Performance improvements
+  ✅ test: Adding tests
+  🔧 chore: Maintenance
