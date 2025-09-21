@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.14](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.13...v0.0.14) (2025-09-21)
+
+
+### Bug Fixes
+
+* enforce stricter renovate rules ([d832573](https://github.com/madflow/trivy-plugin-notify/commit/d8325736ba7c1dcfe89642370f25bbab0e53788e))
+
 ## [0.0.13](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.12...v0.0.13) (2025-07-06)
 
 
