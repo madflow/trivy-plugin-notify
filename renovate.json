@@ -4,10 +4,9 @@
   "labels": ["dependencies"],
   "timezone": "Europe/Berlin",
   "ignorePaths": ["**/testdata/**"],
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true
-  },
+  "internalChecksFilter": "strict",
+  "minimumReleaseAge": "7 days",
+  "osvVulnerabilityAlerts": true,
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
