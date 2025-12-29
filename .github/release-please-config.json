@@ -4,7 +4,10 @@
     ".": {
       "release-type": "simple",
       "extra-files": [
-        "plugin.yaml"
+        {
+          "type": "generic",
+          "path": "plugin.yaml"
+        }
       ]
     }
   }
