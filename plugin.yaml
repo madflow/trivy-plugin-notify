@@ -12,21 +12,21 @@ platforms:
   - selector:
       os: darwin
       arch: amd64
-    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.15/trivy_plugin_notify_0.0.15_darwin-amd64.tar.gz
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.15/trivy_plugin_notify_darwin-amd64.tar.gz
     bin: ./notify
   - selector:
       os: darwin
       arch: arm64
-    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.15/trivy_plugin_notify_0.0.15_darwin-arm64.tar.gz
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.15/trivy_plugin_notify_darwin-arm64.tar.gz
     bin: ./notify
   - selector:
       os: linux
       arch: amd64
-    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.15/trivy_plugin_notify_0.0.15_linux-amd64.tar.gz
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.15/trivy_plugin_notify_linux-amd64.tar.gz
     bin: ./notify
   - selector:
       os: linux
       arch: arm64
-    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.15/trivy_plugin_notify_0.0.15_linux-arm64.tar.gz
+    uri: https://github.com/madflow/trivy-plugin-notify/releases/download/v0.0.15/trivy_plugin_notify_linux-arm64.tar.gz
     bin: ./notify
   # x-release-please-end

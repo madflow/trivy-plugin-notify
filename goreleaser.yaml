@@ -17,7 +17,7 @@ builds:
 
 archives:
   - format: tar.gz
-    name_template: "{{.ProjectName}}_{{.Version}}_{{.Os}}-{{.Arch}}"
+    name_template: "{{.ProjectName}}_{{.Os}}-{{.Arch}}"
     files:
       - README.md
       - LICENSE
