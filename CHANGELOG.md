@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.15](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.14...v0.0.15) (2025-12-29)
+
+
+### Bug Fixes
+
+* configure release-please to update plugin.yaml versions ([3a94e82](https://github.com/madflow/trivy-plugin-notify/commit/3a94e8269e0b6e6d693c90ddb8e290b61d929ac3))
+* security issues ([32f29e4](https://github.com/madflow/trivy-plugin-notify/commit/32f29e4e01dec77d4549739ff581866de31d1963))
+
 ## [0.0.14](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.13...v0.0.14) (2025-09-21)
 
 
