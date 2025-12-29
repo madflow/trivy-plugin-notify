@@ -23,3 +23,4 @@ jobs:
           # for more options
           release-type: simple
           config-file: .github/release-please-config.json
+          manifest-file: .release-please-manifest.json
