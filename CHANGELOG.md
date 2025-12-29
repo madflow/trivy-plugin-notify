@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.16](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.15...v0.0.16) (2025-12-29)
+
+
+### Bug Fixes
+
+* enable annotation-based version updates in release-please ([be68916](https://github.com/madflow/trivy-plugin-notify/commit/be689164f14e15d686e81666d08bd09f9a78251f))
+
 ## [0.0.15](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.14...v0.0.15) (2025-12-29)
 
 
