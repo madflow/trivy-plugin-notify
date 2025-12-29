@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.16](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.15...v0.0.16) (2025-12-29)
+
+
+### Bug Fixes
+
+* enable annotation-based version updates in release-please ([be68916](https://github.com/madflow/trivy-plugin-notify/commit/be689164f14e15d686e81666d08bd09f9a78251f))
+* remove release-type from workflow to use config file settings ([0e18a0c](https://github.com/madflow/trivy-plugin-notify/commit/0e18a0cd8d1fb63dad060683647c193672b6e08c))
+* use generic updater for plugin.yaml to enable annotation-based version updates ([354ac95](https://github.com/madflow/trivy-plugin-notify/commit/354ac954a08b4bdb4e36966cf9914f7043747d60))
+
 ## [0.0.15](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.14...v0.0.15) (2025-12-29)
 
 
