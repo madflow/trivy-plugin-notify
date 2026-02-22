@@ -34,12 +34,12 @@ func NewLogger(component string) *Logger {
 func (l *Logger) formatMessage(level LogLevel, msg string, kvs ...string) string {
 	timestamp := time.Now().Format(time.RFC3339)
 	var baseMsg strings.Builder
-	baseMsg.WriteString(fmt.Sprintf("%s\t%s\t[%s] %s", timestamp, level, l.component, msg))
+	fmt.Fprintf(&baseMsg, "%s\t%s\t[%s] %s", timestamp, level, l.component, msg)
 
 	if len(kvs) > 0 {
 		for i := 0; i < len(kvs); i += 2 {
 			if i+1 < len(kvs) {
-				baseMsg.WriteString(fmt.Sprintf("\t%s=%q", kvs[i], kvs[i+1]))
+				fmt.Fprintf(&baseMsg, "\t%s=%q", kvs[i], kvs[i+1])
 			}
 		}
 	}
