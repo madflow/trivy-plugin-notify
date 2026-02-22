@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.17](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.16...v0.0.17) (2026-02-22)
+
+
+### Bug Fixes
+
+* use fmt.Fprintf instead of WriteString(fmt.Sprintf(...)) ([eca0086](https://github.com/madflow/trivy-plugin-notify/commit/eca008668d2ea7e1e1f42d0365f945239eedcb9c))
+
 ## [0.0.16](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.15...v0.0.16) (2025-12-29)
 
 
