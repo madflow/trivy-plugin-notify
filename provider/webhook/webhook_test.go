@@ -102,7 +102,7 @@ func runNotificationTest(t *testing.T, fixtureFile, snapshotFile string) {
 	os.Setenv("WEBHOOK_URL", ts.URL)
 	webhookProvider := New()
 
-	var report interface{}
+	var report any
 	if err := json.Unmarshal(fixtureData, &report); err != nil {
 		t.Fatalf("failed to unmarshal fixture data: %v", err)
 	}

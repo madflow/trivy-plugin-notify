@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -32,17 +33,18 @@ func NewLogger(component string) *Logger {
 // formatMessage formats the log message with the specified level and optional key-value pairs
 func (l *Logger) formatMessage(level LogLevel, msg string, kvs ...string) string {
 	timestamp := time.Now().Format(time.RFC3339)
-	baseMsg := fmt.Sprintf("%s\t%s\t[%s] %s", timestamp, level, l.component, msg)
+	var baseMsg strings.Builder
+	baseMsg.WriteString(fmt.Sprintf("%s\t%s\t[%s] %s", timestamp, level, l.component, msg))
 
 	if len(kvs) > 0 {
 		for i := 0; i < len(kvs); i += 2 {
 			if i+1 < len(kvs) {
-				baseMsg += fmt.Sprintf("\t%s=%q", kvs[i], kvs[i+1])
+				baseMsg.WriteString(fmt.Sprintf("\t%s=%q", kvs[i], kvs[i+1]))
 			}
 		}
 	}
 
-	return baseMsg
+	return baseMsg.String()
 }
 
 // Info logs an info level message

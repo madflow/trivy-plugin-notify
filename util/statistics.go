@@ -3,14 +3,14 @@ package util
 import "fmt"
 
 type TrivyResult struct {
-	Class             *string       `json:"Class,omitempty"`
-	Licenses          []interface{} `json:"Licenses,omitempty"`
-	Misconfigurations []interface{} `json:"Misconfigurations,omitempty"`
-	Packages          []interface{} `json:"Packages,omitempty"`
-	Secrets           []interface{} `json:"Secrets,omitempty"`
-	Target            string        `json:"Target,omitempty"`
-	Type              string        `json:"Type,omitempty"`
-	Vulnerabilities   []interface{} `json:"Vulnerabilities,omitempty"`
+	Class             *string `json:"Class,omitempty"`
+	Licenses          []any   `json:"Licenses,omitempty"`
+	Misconfigurations []any   `json:"Misconfigurations,omitempty"`
+	Packages          []any   `json:"Packages,omitempty"`
+	Secrets           []any   `json:"Secrets,omitempty"`
+	Target            string  `json:"Target,omitempty"`
+	Type              string  `json:"Type,omitempty"`
+	Vulnerabilities   []any   `json:"Vulnerabilities,omitempty"`
 }
 
 type TrivyReport struct {
@@ -26,14 +26,14 @@ type Statistics struct {
 	Total             int
 }
 
-func CollectStatistics(report interface{}) (Statistics, error) {
+func CollectStatistics(report any) (Statistics, error) {
 	var stats Statistics
 
 	switch v := report.(type) {
 	case TrivyReport:
 		return collectFromReport(v), nil
-	case map[string]interface{}:
-		results, ok := v["Results"].([]interface{})
+	case map[string]any:
+		results, ok := v["Results"].([]any)
 		if !ok {
 			// Return zero statistics if Results is missing or invalid
 			return stats, nil
@@ -67,27 +67,27 @@ func collectFromReport(report TrivyReport) Statistics {
 	return stats
 }
 
-func collectFromMapResults(results []interface{}) Statistics {
+func collectFromMapResults(results []any) Statistics {
 	stats := Statistics{}
 	for _, r := range results {
-		result, ok := r.(map[string]interface{})
+		result, ok := r.(map[string]any)
 		if !ok {
 			continue
 		}
 
-		if vulns, ok := result["Vulnerabilities"].([]interface{}); ok {
+		if vulns, ok := result["Vulnerabilities"].([]any); ok {
 			stats.Vulnerabilities += len(vulns)
 		}
-		if secrets, ok := result["Secrets"].([]interface{}); ok {
+		if secrets, ok := result["Secrets"].([]any); ok {
 			stats.Secrets += len(secrets)
 		}
-		if packages, ok := result["Packages"].([]interface{}); ok {
+		if packages, ok := result["Packages"].([]any); ok {
 			stats.Packages += len(packages)
 		}
-		if misconfigs, ok := result["Misconfigurations"].([]interface{}); ok {
+		if misconfigs, ok := result["Misconfigurations"].([]any); ok {
 			stats.Misconfigurations += len(misconfigs)
 		}
-		if licenses, ok := result["Licenses"].([]interface{}); ok {
+		if licenses, ok := result["Licenses"].([]any); ok {
 			stats.Licenses += len(licenses)
 		}
 	}

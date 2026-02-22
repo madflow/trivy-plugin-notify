@@ -33,7 +33,7 @@ func Test_CollectStatistics(t *testing.T) {
 			snapshotFile := fmt.Sprintf("./testdata/snapshots/%s", tt.fixtureName)
 
 			fixtureData := testhelper.MustReadFile(t, fixtureFile)
-			var report interface{}
+			var report any
 			if err := json.Unmarshal(fixtureData, &report); err != nil {
 				t.Fatalf("failed to unmarshal fixture data: %v", err)
 			}
