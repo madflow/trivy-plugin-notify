@@ -49,7 +49,7 @@ func (p *ProviderWebhook) Notify(data provider.NotificationPayload) error {
 	return nil
 }
 
-func sendWebhookMessage(webhookUrl string, method string, data interface{}) error {
+func sendWebhookMessage(webhookUrl string, method string, data any) error {
 	if method == "GET" {
 		// when the webhook method is GET, we send the data as query parameters
 		// the data has to be encoded to JSON before

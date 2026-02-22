@@ -11,3 +11,6 @@ test:
 
 lint:
 	golangci-lint run
+
+fix:
+	go fix ./...

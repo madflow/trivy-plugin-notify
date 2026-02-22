@@ -153,8 +153,8 @@ func sendEmail(config *smtpConfig, from, to, message string) error {
 			return err
 		}
 
-		recipients := strings.Split(to, ",")
-		for _, recipient := range recipients {
+		recipients := strings.SplitSeq(to, ",")
+		for recipient := range recipients {
 			if err := client.Rcpt(strings.TrimSpace(recipient)); err != nil {
 				return err
 			}
