@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        trivy-version: ['v0.57.1', 'v0.63.0']
+        trivy-version: ['v0.57.1', 'v0.69.1']
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
