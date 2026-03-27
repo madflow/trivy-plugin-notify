@@ -2,16 +2,16 @@ name: Daily Security Scan
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Run daily at midnight UTC
+    - cron: "0 0 * * *" # Run daily at midnight UTC
 
 permissions:
-  contents: read          # Required to checkout and read repo files
-  security-events: write  # Required to upload SARIF files to Security tab
+  contents: read # Required to checkout and read repo files
+  security-events: write # Required to upload SARIF files to Security tab
 
 jobs:
   security-scan:
     name: Trivy Security Scan
-    runs-on: ubuntu-latest
+    runs-on: ubuntu:24.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -19,18 +19,18 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.35.0
         with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          exit-code: '1'
+          scan-type: "fs"
+          scan-ref: "."
+          format: "sarif"
+          output: "trivy-results.sarif"
+          exit-code: "1"
           ignore-unfixed: true
-          severity: 'CRITICAL,HIGH'
-          scanners: 'vuln,secret,misconfig'
-          skip-dirs: 'testdata'
+          severity: "CRITICAL,HIGH"
+          scanners: "vuln,secret,misconfig"
+          skip-dirs: "testdata"
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v4
         if: always()
         with:
-          sarif_file: 'trivy-results.sarif'
+          sarif_file: "trivy-results.sarif"
