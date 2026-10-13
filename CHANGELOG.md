@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.18](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.17...v0.0.18) (2026-10-13)
+
+
+### Bug Fixes
+
+* pin versions in ci ([3f2507d](https://github.com/madflow/trivy-plugin-notify/commit/3f2507dbae8733e2d1089aba22a1e09c31ec1a2b))
+* restore the automated release process ([585e25d](https://github.com/madflow/trivy-plugin-notify/commit/585e25d565edb1dfdb177918703dfa3d1d5a725c))
+
 ## [0.0.17](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.16...v0.0.17) (2026-02-22)
 
 
