@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.19](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.18...v0.0.19) (2026-10-13)
+
+
+### Bug Fixes
+
+* add ntfy notification support ([500fb4e](https://github.com/madflow/trivy-plugin-notify/commit/500fb4ef5bc4a0cb218a97f2ea5b8de8db7a6a12))
+
 ## [0.0.18](https://github.com/madflow/trivy-plugin-notify/compare/v0.0.17...v0.0.18) (2026-10-13)
 
 
