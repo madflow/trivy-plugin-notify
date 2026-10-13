@@ -37,7 +37,7 @@ make clean
 
 ### Go Version & Tooling
 
-- Go 1.24+ (see go.mod)
+- Go 1.27.2+ (see go.mod)
 - Linter: golangci-lint v2 with gofumpt formatter
 - Enabled linters: bodyclose, gocritic, misspell
 
