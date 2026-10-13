@@ -14,7 +14,8 @@ type TrivyResult struct {
 }
 
 type TrivyReport struct {
-	Results []TrivyResult `json:"Results,omitempty"`
+	ArtifactName string        `json:"ArtifactName,omitempty"`
+	Results      []TrivyResult `json:"Results,omitempty"`
 }
 
 type Statistics struct {
