@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/madflow/trivy-plugin-notify/testhelper"
+	"github.com/madflow/trivy-plugin-notify/internal/testhelper"
 )
 
 func Test_CollectStatistics(t *testing.T) {

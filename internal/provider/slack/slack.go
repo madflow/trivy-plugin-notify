@@ -9,7 +9,7 @@ import (
 	"os"
 
 	"github.com/Masterminds/sprig/v3"
-	"github.com/madflow/trivy-plugin-notify/provider"
+	"github.com/madflow/trivy-plugin-notify/internal/provider"
 )
 
 //go:embed slack.tpl

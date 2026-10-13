@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/madflow/trivy-plugin-notify/provider"
-	"github.com/madflow/trivy-plugin-notify/util"
+	"github.com/madflow/trivy-plugin-notify/internal/provider"
+	"github.com/madflow/trivy-plugin-notify/internal/util"
 )
 
 type ProviderNtfy struct{}
