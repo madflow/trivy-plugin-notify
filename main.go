@@ -8,14 +8,14 @@ import (
 	"os"
 	"strings"
 
-	"github.com/madflow/trivy-plugin-notify/environment"
-	"github.com/madflow/trivy-plugin-notify/provider"
-	"github.com/madflow/trivy-plugin-notify/provider/console"
-	"github.com/madflow/trivy-plugin-notify/provider/email"
-	"github.com/madflow/trivy-plugin-notify/provider/ntfy"
-	"github.com/madflow/trivy-plugin-notify/provider/slack"
-	"github.com/madflow/trivy-plugin-notify/provider/webhook"
-	"github.com/madflow/trivy-plugin-notify/util"
+	"github.com/madflow/trivy-plugin-notify/internal/environment"
+	"github.com/madflow/trivy-plugin-notify/internal/provider"
+	"github.com/madflow/trivy-plugin-notify/internal/provider/console"
+	"github.com/madflow/trivy-plugin-notify/internal/provider/email"
+	"github.com/madflow/trivy-plugin-notify/internal/provider/ntfy"
+	"github.com/madflow/trivy-plugin-notify/internal/provider/slack"
+	"github.com/madflow/trivy-plugin-notify/internal/provider/webhook"
+	"github.com/madflow/trivy-plugin-notify/internal/util"
 )
 
 // LogMessage represents a message with a log level

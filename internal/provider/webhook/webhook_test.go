@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/madflow/trivy-plugin-notify/environment"
-	"github.com/madflow/trivy-plugin-notify/provider"
-	"github.com/madflow/trivy-plugin-notify/testhelper"
+	"github.com/madflow/trivy-plugin-notify/internal/environment"
+	"github.com/madflow/trivy-plugin-notify/internal/provider"
+	"github.com/madflow/trivy-plugin-notify/internal/testhelper"
 )
 
 type testPayload struct {

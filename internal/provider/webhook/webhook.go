@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/madflow/trivy-plugin-notify/provider"
+	"github.com/madflow/trivy-plugin-notify/internal/provider"
 )
 
 var allowedMethods = map[string]bool{

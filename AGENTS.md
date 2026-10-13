@@ -19,11 +19,11 @@ make test
 
 # Run a single test
 go test -v -run TestName ./path/to/package
-# Example: go test -v -run Test_notify ./provider/slack
+# Example: go test -v -run Test_notify ./internal/provider/slack
 
 # Run tests for a specific package
-go test -v ./provider/slack
-go test -v ./util
+go test -v ./internal/provider/slack
+go test -v ./internal/util
 
 # Lint code
 make lint
@@ -55,7 +55,7 @@ import (
     "os"
 
     "github.com/Masterminds/sprig/v3"
-    "github.com/madflow/trivy-plugin-notify/provider"
+    "github.com/madflow/trivy-plugin-notify/internal/provider"
 )
 ```
 
@@ -193,12 +193,12 @@ logger.Fatal("fatal error") // exits with code 1
 
 ```
 /                     # Root: main.go, go.mod, Makefile
-/environment/         # CI environment detection
-/provider/            # Notification providers
-/provider/<name>/     # Individual provider implementations
-/provider/<name>/testdata/  # Test fixtures
-/util/                # Shared utilities (logger, statistics)
-/testhelper/          # Test utilities (mock server, snapshots)
+/internal/environment/         # CI environment detection
+/internal/provider/            # Notification providers
+/internal/provider/<name>/     # Individual provider implementations
+/internal/provider/<name>/testdata/  # Test fixtures
+/internal/util/                # Shared utilities (logger, statistics)
+/internal/testhelper/          # Test utilities (mock server, snapshots)
 /testdata/            # Sample vulnerable projects for testing
 ```
 

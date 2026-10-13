@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/madflow/trivy-plugin-notify/provider"
+	"github.com/madflow/trivy-plugin-notify/internal/provider"
 )
 
 func New() *ProviderConsole {

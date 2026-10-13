@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/madflow/trivy-plugin-notify/util"
+	"github.com/madflow/trivy-plugin-notify/internal/util"
 )
 
 type testPayload struct {
