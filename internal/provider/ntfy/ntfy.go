@@ -37,21 +37,22 @@ func (p *ProviderNtfy) Notify(data provider.NotificationPayload) error {
 	if err != nil {
 		return err
 	}
-	body := fmt.Sprintf("Source: %s\n", reportSource(data.TrivyReport))
+	var body strings.Builder
+	fmt.Fprintf(&body, "Source: %s\n", reportSource(data.TrivyReport))
 	ci := data.EnvironmentCi
 	if ci.Provider != "" && ci.Provider != "local" {
-		body += fmt.Sprintf("CI provider: %s\n", singleLine(ci.Provider))
+		fmt.Fprintf(&body, "CI provider: %s\n", singleLine(ci.Provider))
 		for _, field := range []struct{ label, value string }{
 			{"Project", ci.Project}, {"Ref", ci.Ref}, {"URL", ci.Url},
 		} {
 			if value := singleLine(field.value); value != "" {
-				body += fmt.Sprintf("%s: %s\n", field.label, value)
+				fmt.Fprintf(&body, "%s: %s\n", field.label, value)
 			}
 		}
 	}
-	body += fmt.Sprintf("\nVulnerabilities: %d\nSecrets: %d\nMisconfigurations: %d\nLicenses: %d\nPackages: %d\nTotal: %d\n",
+	fmt.Fprintf(&body, "\nVulnerabilities: %d\nSecrets: %d\nMisconfigurations: %d\nLicenses: %d\nPackages: %d\nTotal: %d\n",
 		stats.Vulnerabilities, stats.Secrets, stats.Misconfigurations, stats.Licenses, stats.Packages, stats.Total)
-	req, err := http.NewRequest(http.MethodPost, topicURL, strings.NewReader(body))
+	req, err := http.NewRequest(http.MethodPost, topicURL, strings.NewReader(body.String()))
 	if err != nil {
 		return errors.New("failed to create ntfy request: check NTFY_URL")
 	}
