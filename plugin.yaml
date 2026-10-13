@@ -5,7 +5,7 @@ maintainer: madflow
 summary: Vulnerability notification
 description: |-
   Trivy plugin for sending notifications to one or more supported providers.
-  Currently supports slack and webhook.
+  Currently supports console, email, slack, ntfy, and webhook.
 output: true
 platforms:
   # x-release-please-start-version

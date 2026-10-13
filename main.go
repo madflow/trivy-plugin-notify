@@ -12,6 +12,7 @@ import (
 	"github.com/madflow/trivy-plugin-notify/provider"
 	"github.com/madflow/trivy-plugin-notify/provider/console"
 	"github.com/madflow/trivy-plugin-notify/provider/email"
+	"github.com/madflow/trivy-plugin-notify/provider/ntfy"
 	"github.com/madflow/trivy-plugin-notify/provider/slack"
 	"github.com/madflow/trivy-plugin-notify/provider/webhook"
 	"github.com/madflow/trivy-plugin-notify/util"
@@ -101,6 +102,11 @@ func run(report any, stats util.Statistics) (*LogMessage, error) {
 			if err := slackProvider.Notify(providersPayload); err != nil {
 				return &LogMessage{Level: "error", Message: fmt.Sprintf("Slack provider failed: %s", err)}, err
 			}
+		case "ntfy":
+			ntfyProvider := ntfy.New()
+			if err := ntfyProvider.Notify(providersPayload); err != nil {
+				return &LogMessage{Level: "error", Message: fmt.Sprintf("Ntfy provider failed: %s", err)}, err
+			}
 		case "webhook":
 			webhookProvider := webhook.New()
 			if err := webhookProvider.Notify(providersPayload); err != nil {
@@ -119,6 +125,8 @@ func isSupported(provider string) error {
 	case "email":
 		return nil
 	case "slack":
+		return nil
+	case "ntfy":
 		return nil
 	case "webhook":
 		return nil

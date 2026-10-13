@@ -7,6 +7,7 @@ The currently supported providers are:
 - console
 - email
 - slack
+- ntfy
 - webhook
 
 Providers can be configured via environment variables.
@@ -119,6 +120,42 @@ export SLACK_WEBHOOK="https://hooks.slack.com/services/T00000000/B00000000/XXXXX
 ```shell
 trivy image -f json debian:12 | trivy notify --providers=slack
 ```
+
+### ntfy
+
+This provider publishes a compact plain-text summary to [ntfy](https://ntfy.sh), including the scan source and counts for vulnerabilities, secrets, misconfigurations, licenses, packages, and their total. It supports hosted and self-hosted ntfy servers.
+
+The source comes from the report's `ArtifactName` (such as a directory path or image name), falling back to unique result targets when unavailable. If neither is present, the source is explicitly marked unknown. In supported CI environments, the message also includes the CI provider and available project, ref, and URL. Local placeholder CI metadata is omitted.
+
+#### Environment Variables
+
+- `NTFY_URL` (required): The full HTTP(S) topic URL, including the topic path. Embedded credentials and URL fragments are not allowed.
+- `NTFY_TOKEN` (optional): An access token sent using bearer authentication. Do not embed tokens in the URL.
+
+#### Examples
+
+Hosted ntfy:
+
+```shell
+export NTFY_URL="https://ntfy.sh/my-trivy-topic"
+trivy image -f json debian:12 | trivy notify --providers=ntfy
+```
+
+Self-hosted ntfy with authentication:
+
+```shell
+export NTFY_URL="https://ntfy.example.com/trivy"
+export NTFY_TOKEN="your-access-token"
+trivy image -f json debian:12 | trivy notify --providers=ntfy,webhook
+```
+
+The combined example also requires the webhook provider's configuration.
+
+Reports with a zero total are skipped unless `--send-always` is set. Reports containing only secrets, misconfigurations, licenses, or packages are eligible; the total includes packages and licenses, not just security findings. With `--send-always`, empty reports produce a summary with zero counts.
+
+Messages use the fixed title `Trivy scan results`, a 30-second timeout, and no redirects or retries. Any 2xx response indicates success.
+
+Public-topic names are **not authentication**. Use protected topics and access tokens for sensitive notifications, and HTTPS to protect tokens in transit.
 
 ### Webhook
 
