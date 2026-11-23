@@ -2,7 +2,8 @@ name: Daily Security Scan
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Run daily at midnight UTC
+    - cron: "23 0 * * *" # Run daily at 00:23 UTC, away from the top of the hour
+  workflow_dispatch:
 
 permissions:
   contents: read # Required to checkout and read repo files
